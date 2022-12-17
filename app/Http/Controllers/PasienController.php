@@ -86,7 +86,7 @@ class PasienController extends Controller
                 $antrean = antrean::create([
                     'nomor_antrean' => $uuid,
                     'nomer'=>$no,
-                    'status' => 'menunggu',
+                    'status' => 'Menunggu',
                     'id_puskesmas' => $data['id_puskesmas'],
                     'id_poli' => $data['id_poli'],
                     'id_pasien' => $pasien->id_pasien,

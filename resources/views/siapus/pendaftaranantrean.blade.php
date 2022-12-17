@@ -157,7 +157,7 @@
         </section>
 
 
-        <div class="popupdaftar" id="popupdaftar">
+        {{-- <div class="popupdaftar" id="popupdaftar">
             <div class="popup-content-daftar">
                 <div >
                     <img class="popup-img-daftar" src="{{asset('./siapus/img/pop-up/pendaftaran.png') }}" alt="">
@@ -169,7 +169,7 @@
                 <a href="{{route('tiket')}}" class="btn popup-btn2"> Ya </a>
 
             </div>
-        </div>
+        </div> --}}
 
     </section>
 
