@@ -38,8 +38,8 @@
                                 <div>
                                     <select name="provinsi" id="provinsi" class="form-select" data-live-search="true">
                                         <option selected disabled value="">Provinsi</option>
-                                        @foreach($data_provinsi as $provinsi)
-                                        <option value="{{$provinsi['id']}}">{{$provinsi['name']}}</option>
+                                        @foreach($provinsi as $provinsi)
+                                        <option value="{{$provinsi['id_prov']}}">{{$provinsi['nama_prov']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -56,6 +56,7 @@
                                 <div>
                                     <select name="kabupaten" id="kabupaten" class="form-select" data-live-search="true">
                                         <option selected disabled value="">Pilih Kabupaten/Kota Anda</option>
+                                        {{-- <option value="{{$kabupaten['id_kab']}}">{{$kabupaten['nama_kab']}}</option> --}}
                                     </select>
                                 </div>
                             </div>
@@ -199,8 +200,10 @@
             data.forEach(el => {
             if (el.id_poli) {
                 $('#' + name).append('<option value="' + el.id_poli + '">' + el.nama_poli + '</option>');
-            } else {
-                $('#' + name).append('<option value="' + el.id + '">' + el.name + '</option>');
+            } else if (el.id_kab) {
+                $('#' + name).append('<option value="' + el.id_kab + '">' + el.nama_kab + '</option>');
+            }  else if (el.id_kec) {
+                $('#' + name).append('<option value="' + el.id_kec + '">' + el.nama_kec + '</option>');
             }
             })
         }

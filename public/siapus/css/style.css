@@ -1232,6 +1232,12 @@ section {
     /* font-size: 100px; */
 }
 
+@media (max-width: 992px) {
+    .infonomorantrean .count-box {
+        margin-left: -25px;
+    }
+}
+
 /*--------------------------------------------------------------
   # Informasi Poli
   --------------------------------------------------------------*/

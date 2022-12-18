@@ -96,6 +96,8 @@ class PuskesmasController extends Controller
     {
         //
     }
+
+    
     public function poli(Request $request)
     {
         $poli= poli::where('id_puskesmas', $request->id)->get();

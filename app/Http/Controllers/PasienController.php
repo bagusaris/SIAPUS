@@ -7,6 +7,11 @@ use App\Models\pasien;
 use App\Models\puskesmas;
 use App\Models\poli;
 use App\Models\antrean;
+use App\Models\provinsi;
+use App\Models\kabupaten;
+use App\Models\kecamatan;
+use App\Models\desa;
+
 use Illuminate\Support\Facades\Http;
 
 class PasienController extends Controller
@@ -36,9 +41,8 @@ class PasienController extends Controller
     {
         //
         $puskesmas = puskesmas::all();
-        $provinsi = Http::get('https://region-api.profileimage.studio/provinces');
-        $data_provinsi = $provinsi->json('data');
-        return view('siapus.pendaftaranantrean', compact('puskesmas', 'data_provinsi'));
+        $provinsi= provinsi::all();
+        return view('siapus.pendaftaranantrean', compact('puskesmas', 'provinsi'));
     }
 
     /**
@@ -145,32 +149,13 @@ class PasienController extends Controller
     }
     public function kabupaten(Request $request)
     {
-        $kabupaten = Http::get('https://region-api.profileimage.studio/regencies');
-        $data_kabupaten = $kabupaten->json('data');
-        $kab = [];
-        foreach ($data_kabupaten as $item) {
-            if ($item['province_id'] == $request->id) {
-                array_push($kab, (object)[
-                    'id' => $item['id'],
-                    'name' => $item['name']
-                ]);
-            }
-        }
+        $kab =kabupaten::where('id_prov', $request->id)->get();
         return response()->json($kab);
     }
     public function kecamatan(Request $request)
     {
-        $kecamatan = Http::get('https://region-api.profileimage.studio/districts');
-        $data_kecamatan = $kecamatan->json('data');
-        $kec = [];
-        foreach ($data_kecamatan as $item) {
-            if ($item['regency_id'] == $request->id) {
-                array_push($kec, (object)[
-                    'id' => $item['id'],
-                    'name' => $item['name']
-                ]);
-            }
-        }
+        $kec = kecamatan::where('id_kab', $request->id)->get();
+        
         return response()->json($kec);
     }
     public function desa(Request $request)

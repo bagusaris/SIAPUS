@@ -109,10 +109,10 @@
                   <h5 class="modal-title" id="exampleModalLabel"><strong id="nama_poli"></strong></h5>
                 </div>
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                  <h5 class="modal-title" id="exampleModalLabel">Antrean Saat Ini : A 019</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Antrean Saat Ini : C 0001</h5>
                 </div>
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                                <h5 class="modal-title" id="exampleModalLabel">Antrean Selanjutnya : A 020</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Antrean Selanjutnya : C 0002</h5>
                   </div>
                 </div>
             </div>

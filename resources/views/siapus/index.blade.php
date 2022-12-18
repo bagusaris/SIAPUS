@@ -304,7 +304,7 @@
                                 }
                               }).length
                            
-                    $('#poli').append('<div class="col-lg-3 col-md-3 d-md-flex align-items-md-stretch mb-5"><div class="count-box"><img class="imginfoantrean mx-auto" src="siapus/img/poli/'+ data_poli.logo_poli+ '" alt="" /><span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter d-flex align-items-center justify-content-center" >'+array+'</span><p class="namapoli" style="font-size: 20px"><strong >'+data_poli.nama_poli+'</strong></p><div class="col-md-12 col-sm-6 order-first order-md-last d-flex align-items-center justify-content-center"><a href="{{route('pasiens.create')}}" class="btn btn-get-started scrollto">Daftar Sekarang</a></div></div></div>')
+                    $('#poli').append('<div class="col-lg-3 col-md-3 d-md-flex align-items-md-stretch mb-5" style="margin-left:50px"><div class="count-box"><img class="imginfoantrean mx-auto" src="siapus/img/poli/'+ data_poli.logo_poli+ '" alt="" /><span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter d-flex align-items-center justify-content-center" >'+array+'</span><p class="namapoli" style="font-size: 20px"><strong >'+data_poli.nama_poli+'</strong></p><div class="col-md-12 col-sm-6 order-first order-md-last d-flex align-items-center justify-content-center"><a href="{{route('pasiens.create')}}" class="btn btn-get-started scrollto">Daftar Sekarang</a></div></div></div>')
                   }
               })
             })
