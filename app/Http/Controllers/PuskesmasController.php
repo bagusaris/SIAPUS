@@ -26,7 +26,7 @@ class PuskesmasController extends Controller
     public function get()
     {
         //
-        $puskesmas = puskesmas::all();
+        $puskesmas = puskesmas::with(['poli', 'pasien','antrean.polis'])->get();
         return response()->json(array('code' => 200, 'message' => 'success', 'data' => $puskesmas));
 
     }

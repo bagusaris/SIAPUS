@@ -253,52 +253,8 @@
           <div class="section-title">
             <h2>Informasi Nomor Antrean</h2>
           </div>
-          <div class="row no-gutters d-flex align-items-center justify-content-center">
-            <div class="col-lg-3 col-md-3 d-md-flex align-items-md-stretch mb-5">
-              <div class="count-box">
-                <img class="imginfoantrean mx-auto" src="{{asset('siapus/img/poli/UMUM.png') }}" alt="" />
-                <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1"
-                  class="purecounter d-flex align-items-center justify-content-center"></span>
-
-                <p class="namapoli" style="font-size: 20px">
-                  <strong>POLI UMUM</strong>
-                </p>
-                <div
-                  class="col-md-12 col-sm-6 order-first order-md-last d-flex align-items-center justify-content-center">
-                  <a href="{{route('pasiens.create')}}" class="btn btn-get-started scrollto">Daftar Sekarang</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch mb-5" style="margin-left:50px; margin-right:50px">
-              <div class="count-box">
-                <img class="imginfoantrean mx-auto" src="{{asset('siapus/img/poli/KIA.png') }}" alt="" />
-                <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1"
-                  class="purecounter d-flex align-items-center justify-content-center"></span>
-                <p class="namapoli" style="font-size: 20px">
-                  <strong>POLI KIA</strong>
-                </p>
-                <div
-                  class="col-md-12 col-sm-6 order-first order-md-last d-flex align-items-center justify-content-center">
-                  <a href="{{route('pasiens.create')}}" class="btn btn-get-started scrollto">Daftar Sekarang</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-3 d-md-flex align-items-md-stretch mb-5">
-              <div class="count-box">
-                <img class="imginfoantrean mx-auto" src="{{asset('siapus/img/poli/GIGI.png') }}" alt="" />
-                <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1"
-                  class="purecounter d-flex align-items-center justify-content-center"></span>
-                <p class="namapoli" style="font-size: 20px">
-                  <strong>POLI GIGI</strong>
-                </p>
-                <div
-                  class="col-md-12 col-sm-6 order-first order-md-last d-flex align-items-center justify-content-center">
-                  <a href="{{route('pasiens.create')}}" class="btn btn-get-started scrollto">Daftar Sekarang</a>
-                </div>
-              </div>
-            </div>
+          <div class="row no-gutters d-flex align-items-center justify-content-center" id="poli">
+            
           </div>
         </div>
       </section>
@@ -309,9 +265,14 @@
 
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
-    $( "select" ) .change(function () {    
+    $( "select" ) .change(function () {   
+      const container = document.getElementById('poli');
+
+      container.replaceChildren();
+      
       var selPus = document.getElementById("id_puskesmas").value
       $.get("/puskesmas/index", (res) => {
+        
         res.data.forEach((item, index) => {
           if(selPus==item.id_puskesmas){
             document.getElementById("gambar").src='/siapus/img/'+ item.foto_puskesmas;
@@ -320,6 +281,33 @@
             document.getElementById("telp_puskesmas").innerHTML = item.telp_puskesmas;
             document.getElementById("email_puskesmas").innerHTML = item.email_puskesmas;
             document.getElementById("jam_kerja").innerHTML = item.jam_kerja;
+            const temp = {};
+            for (const age of item.antrean) {
+              temp[age.id_poli] = true;
+            }
+
+            const unique = [];
+            for (const age in temp) {
+              unique.push(age);
+            }
+            unique.forEach((data_antrean,index_antrean)=>{
+              // console.log(data_antrean);
+              item.poli.forEach((data_poli, index_poli) => {
+                if(data_poli.id_poli==data_antrean){
+                    
+                    var array= item.antrean.filter(function(item_poli){
+                                if ((item_poli.id_poli == data_poli.id_poli)&&(item_poli.id_puskesmas==item.id_puskesmas)) {
+                                  return true;
+                                } else {
+                                  return false;
+                                }
+                              }).length
+                           
+                    $('#poli').append('<div class="col-lg-3 col-md-3 d-md-flex align-items-md-stretch mb-5"><div class="count-box"><img class="imginfoantrean mx-auto" src="{{asset('siapus/img/poli/UMUM.png') }}" alt="" /><span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter d-flex align-items-center justify-content-center" >'+array+'</span><p class="namapoli" style="font-size: 20px"><strong >'+data_poli.nama_poli+'</strong></p><div class="col-md-12 col-sm-6 order-first order-md-last d-flex align-items-center justify-content-center"><a href="{{route('pasiens.create')}}" class="btn btn-get-started scrollto">Daftar Sekarang</a></div></div></div>')
+                  }
+              })
+            })
+            
           }
          })
     });
