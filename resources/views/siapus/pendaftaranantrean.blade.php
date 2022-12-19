@@ -203,6 +203,7 @@
             } else if (el.id_kab) {
                 $('#' + name).append('<option value="' + el.id_kab + '">' + el.nama_kab + '</option>');
             }  else if (el.id_kec) {
+                console.log(el.id_kec);
                 $('#' + name).append('<option value="' + el.id_kec + '">' + el.nama_kec + '</option>');
             }
             })
