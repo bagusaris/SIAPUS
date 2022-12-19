@@ -13,7 +13,7 @@ class desa extends Model
     protected $table = 'desas';
 
     protected $fillable = [
-        'id_kec',
+        'id_kecamatan',
         'nama_desa',
       ];
 

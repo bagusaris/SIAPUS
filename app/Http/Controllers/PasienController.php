@@ -154,23 +154,12 @@ class PasienController extends Controller
     }
     public function kecamatan(Request $request)
     {
-        $kec = kecamatan::where('id_kab', $request->id)->get();
-        
+        $kec = kecamatan::where('id_kabupaten', $request->id)->get();
         return response()->json($kec);
     }
     public function desa(Request $request)
     {
-        $desa = Http::get('https://region-api.profileimage.studio/villages');
-        $data_desa = $desa->json('data');
-        $kec = [];
-        foreach ($data_desa as $item) {
-            if ($item['district_id'] == $request->id) {
-                array_push($kec, (object)[
-                    'id' => $item['id'],
-                    'name' => $item['name']
-                ]);
-            }
-        }
-        return response()->json($kec);
+        $des = desa::where('id_kecamatan', $request->id)->get();
+        return response()->json($des);
     }
 }

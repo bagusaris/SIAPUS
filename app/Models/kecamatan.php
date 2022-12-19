@@ -13,7 +13,7 @@ class kecamatan extends Model
     protected $table = 'kecamatans';
 
     protected $fillable = [
-        'id_kab',
+        'id_kabupaten',
         'nama_kec',
       ];
 

@@ -190,7 +190,6 @@
             if (name == "id_poli") {
                 $('#' + name).append('<option selected disabled value="">Poli</option> ');
             } else if (name == "kabupaten") {
-                console.log(name);
                 $('#' + name).append('<option selected disabled value="">kabupaten</option> ');
             }else if (name == "kecamatan") {
                 $('#' + name).append('<option selected disabled value="">kecamatan</option> ');
@@ -203,8 +202,9 @@
             } else if (el.id_kab) {
                 $('#' + name).append('<option value="' + el.id_kab + '">' + el.nama_kab + '</option>');
             }  else if (el.id_kec) {
-                console.log(el.id_kec);
                 $('#' + name).append('<option value="' + el.id_kec + '">' + el.nama_kec + '</option>');
+            }else if (el.id_desa) {
+                $('#' + name).append('<option value="' + el.id_desa + '">' + el.nama_desa + '</option>');
             }
             })
         }
