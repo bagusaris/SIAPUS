@@ -233,7 +233,7 @@
                         <div class="icon-box mt-5">
                             <i class="bi bi-envelope"></i>
                             <h4>Email</h4>
-                            <p id="email_puskesmas">dinkesbanyuwangi@yahoo.co.id</p>
+                            <p id="email_puskesmas">dinkesbanyuwangi@banyuwangikab.co.id</p>
                         </div>
                         <div class="icon-box mt-5">
                             <i class="bi bi-clock"></i>
