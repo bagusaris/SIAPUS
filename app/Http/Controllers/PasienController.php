@@ -85,7 +85,6 @@ class PasienController extends Controller
                         $no= $digit + 1;
                     }
                 }
-                // dd($uuid,$no);
                 $pasien = pasien::create($data);
                 $antrean = antrean::create([
                     'nomor_antrean' => $uuid,
